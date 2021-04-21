@@ -15,11 +15,10 @@ jobs:
         uses: 1466587594/get-current-time@v2
         id: current-time
         with:
-          format: YYYYMMDD-HH
-          utcOffset: "+08:00"
+          format: YYYYMMDD
       - name: Use current time
         env:
-          TIME: "${{ steps.current-time.outputs.ISOTime }}"
+          TIME: "${{ steps.current-time.outputs.time }}"
         run: echo $TIME 
       - name: Release
         uses: softprops/action-gh-release@v1
