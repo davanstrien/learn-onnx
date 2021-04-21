@@ -18,7 +18,7 @@ jobs:
           format: YYYYMMDD
       - name: Use current time
         env:
-          TIME: "${{ steps.current-time.outputs.time }}"
+          TIME: "${{ steps.current-time.outputs.formattedTime }}"
         run: echo $TIME 
       - name: Release
         uses: softprops/action-gh-release@v1
