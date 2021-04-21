@@ -20,13 +20,15 @@ jobs:
         env:
           TIME: "${{ steps.current-time.outputs.formattedTime }}"
         run: echo $TIME 
+      - uses: papeloto/action-zip@v1
+        with:
+          files: model/
+          recursive: false
+          dest: ${{ steps.current-time.outputs.formattedTime }}.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            *.onnx
-            README.md
-            vocab.txt
+          files: ${{ steps.current-time.outputs.formattedTime }}.zip
           name:  ${{ steps.current-time.outputs.formattedTime }}
           tag_name:  ${{ steps.current-time.outputs.formattedTime }}
         env:
