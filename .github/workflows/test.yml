@@ -18,7 +18,7 @@ jobs:
     
         from pathlib import Path
     
-        model_path_onnx = Path('model/*.onnx')
+        model_path_onnx = Path('model).rglob('*.onnx')
         model_card = Path('model/modelcard.md')
         vocab = Path('model/vocab.txt')
         
