@@ -24,8 +24,9 @@ jobs:
     
         model_path_onnx = Path('model/*.onnx')
         model_card = Path('model/modelcard.md')
+        vocab = Path('model/vocab.txt')
         
         assert model_path_onnx.exists(), 'Did not find onnx model in the model directory!'
         assert model_card.exists(), 'Did not find a model card in the model directory'
-
+        assert vocab.exists(), 'Did not find a vocab.txt file'
       shell: python
