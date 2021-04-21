@@ -1,5 +1,7 @@
 name: Check release
-on: pull
+on:
+  pull_request:
+    branches: [ main ]
 
 jobs:
  check-files:
