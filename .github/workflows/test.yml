@@ -7,12 +7,22 @@ jobs:
  check-files:
    runs-on: ubuntu-latest
    steps:
-    - uses: actions/checkout@v1
-    - name: test files
-      run: | 
-        if [ ! -f models/modelcard.md ]; then
-        echo "File not found!"  
-        fi
-        exit 1
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
 
-   
+    - name: check files exist
+      run: |
+    
+        from pathlib import Path
+    
+        model_path_onnx = Path('model/*.onnx')
+        model_card = Path('model/modelcard.md')
+        vocab = Path('model/vocab.txt')
+        
+        assert model_path_onnx.exists(), 'Did not find onnx model in the model directory!'
+        assert model_card.exists(), 'Did not find a model card in the model directory'
+        assert vocab.exists(), 'Did not find a vocab.txt file'
+      shell: python
