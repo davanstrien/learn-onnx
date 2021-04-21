@@ -1,0 +1,29 @@
+name: Check release
+on: pull
+
+jobs:
+ check-files:
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@main
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: install dependencies
+      run:  pip3 install pyyaml
+
+    - name: check baseurl
+      id: baseurl
+      run: |
+    
+        from pathlib import Path
+    
+        model_path_onnx = Path('model/*.onnx')
+        model_card = Path('model/modelcard.md')
+        
+        assert model_path_onnx.exists(), 'Did not find onnx model in the model directory!'
+        assert model_card.exists(), 'Did not find a model card in the model directory'
+
+      shell: python
