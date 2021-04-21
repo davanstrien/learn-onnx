@@ -10,8 +10,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            README.md
-                 env:
+          files: README.md
+          name: test
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
