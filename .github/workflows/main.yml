@@ -24,7 +24,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: README.md
-          name: test
-          tag_name: test
+          name: $TIME 
+          tag_name: $TIME 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
