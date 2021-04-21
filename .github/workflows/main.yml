@@ -23,7 +23,10 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: README.md
+          files: |
+            *.onnx
+            README.md
+            vocab.txt
           name:  ${{ steps.current-time.outputs.formattedTime }}
           tag_name:  ${{ steps.current-time.outputs.formattedTime }}
         env:
