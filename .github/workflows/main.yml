@@ -13,5 +13,6 @@ jobs:
         with:
           files: README.md
           name: test
+          tag_name: test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
