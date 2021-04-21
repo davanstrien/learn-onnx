@@ -24,7 +24,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: README.md
-          name: $TIME 
-          tag_name: $TIME 
+          name:  ${{ steps.current-time.outputs.formattedTime }}
+          tag_name:  ${{ steps.current-time.outputs.formattedTime }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
